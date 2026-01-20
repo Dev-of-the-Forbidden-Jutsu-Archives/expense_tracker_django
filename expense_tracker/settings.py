@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import glob
 from pathlib import Path
 from re import M
 
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "tracker"
+
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'expense_tracker.middleware.RequestLoggingMiddleware.RequestLogging',
 ]
 
 ROOT_URLCONF = "expense_tracker.urls"
@@ -70,6 +74,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "expense_tracker.wsgi.application"
+
+# from django.conf import global_settings
+# TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+#     'django.template.context_processors.request',
+# )   
 
 
 # Database
